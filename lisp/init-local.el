@@ -11,6 +11,10 @@
 (use-package evil
   :ensure t
   :init
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode 1))
 
 
   (setq evil-respect-visual-line-mode t)
@@ -60,7 +64,30 @@
   ;; (define-key evil-normal-state-map (kbd ", gwgw") (lambda() (interactive) (find-file "/sshx:gwgw.com|sshx:aflxvsol12:~")))
   (define-key evil-normal-state-map (kbd ", chat") (lambda() (interactive) (find-file "/sshx:175.123.88.134#3389|sshx:gwgw.com|sshx:root@203.238.139.141:~")))
   )
-(add-hook 'after-init-hook (lambda () (load-theme 'deeper-blue)))
+(add-hook 'after-init-hook (lambda () (load-theme 'sanityinc-solarized-dark)))
+
+(use-package counsel-etags
+  :ensure t
+  :init
+  :config
+  )
+
+(use-package neotree
+  :ensure t
+  :init
+  :config
+  (add-hook 'neotree-mode-hook
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
+              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "g") 'neotree-refresh)
+              (define-key evil-normal-state-local-map (kbd "n") 'neotree-next-line)
+              (define-key evil-normal-state-local-map (kbd "p") 'neotree-previous-line)
+              (define-key evil-normal-state-local-map (kbd "A") 'neotree-stretch-toggle)
+              (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
+  )
 
 (use-package powerline
   :ensure t
@@ -69,11 +96,15 @@
             (use-package airline-themes
               :ensure t
               :config
-              (load-theme 'airline-dark t))))
-
+              (load-theme 'airline-dark t) 
+              )))
 
 (setq-default c-basic-offset 4)
 (setq-default indent-tabs-mode nil)
+(define-key global-map (kbd "<escape>") 'keyboard-escape-quit)
+(add-hook 'after-change-major-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?_ "w")))
 
 (provide 'init-local)
 
