@@ -107,6 +107,13 @@
             (modify-syntax-entry ?_ "w")))
 
 
+(when (maybe-require-package 'vs-dark-theme)
+
+  (defun reapply-themes ()
+    (load-theme 'vs-dark t)) 
+  (add-hook 'after-init-hook 'reapply-themes))
+
+  
 
 (when (maybe-require-package 'cmake-mode)
   (add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
@@ -114,5 +121,6 @@
 (when (maybe-require-package 'go-mode)
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
   )
+
 (provide 'init-local)
 
