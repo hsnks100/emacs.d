@@ -45,6 +45,8 @@
   (define-key evil-normal-state-map (kbd "]") 'evil-scroll-down)
   (define-key evil-visual-state-map (kbd "[") 'evil-scroll-up)
   (define-key evil-visual-state-map (kbd "]") 'evil-scroll-down)
+
+  (define-key evil-normal-state-map (kbd "0") 'evil-first-non-blank)
   (global-set-key (kbd "C-h") 'evil-window-left)
   (global-set-key (kbd "C-l") 'evil-window-right)
   (global-set-key (kbd "C-j") 'evil-window-down)
@@ -96,7 +98,7 @@
             (use-package airline-themes
               :ensure t
               :config
-              (load-theme 'airline-dark t) 
+              (load-theme 'airline-cool t) 
               )))
 
 (setq-default c-basic-offset 4)
