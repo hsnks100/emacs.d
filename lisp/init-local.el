@@ -68,11 +68,6 @@
   )
 (add-hook 'after-init-hook (lambda () (load-theme 'sanityinc-solarized-dark)))
 
-(use-package counsel-etags
-  :ensure t
-  :init
-  :config
-  )
 
 (use-package neotree
   :ensure t
@@ -123,6 +118,10 @@
 (when (maybe-require-package 'go-mode)
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
   )
-
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command 
+   (format "find %s -type f | ctags -e -R . " dir-name)))
 (provide 'init-local)
 
