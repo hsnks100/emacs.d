@@ -74,7 +74,7 @@
 (require 'init-sessions)
 (require 'init-mmm)
 
-(require 'init-editing-utils)
+;; (require 'init-editing-utils)
 (require 'init-whitespace)
 
 (require 'init-vc)
@@ -82,7 +82,7 @@
 (require 'init-git)
 (require 'init-github)
 
-(require 'init-projectile)
+;; ;; (require 'init-projectile)
 
 (require 'init-compile)
 (require 'init-crontab)
@@ -115,12 +115,13 @@
 (require 'init-nix)
 (maybe-require-package 'nginx-mode)
 
+
 ;; (require 'init-paredit)
-(require 'init-lisp)
-(require 'init-slime)
-(require 'init-clojure)
-(require 'init-clojure-cider)
-(require 'init-common-lisp)
+;; (require 'init-lisp)
+;; (require 'init-slime)
+;; (require 'init-clojure)
+;; (require 'init-clojure-cider)
+;; (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
   (require 'init-spelling))
@@ -145,6 +146,7 @@
   (maybe-require-package 'daemons))
 (maybe-require-package 'dotenv-mode)
 (maybe-require-package 'shfmt)
+
 
 (when (maybe-require-package 'uptimes)
   (setq-default uptimes-keep-count 200)
