@@ -51,6 +51,9 @@
   (global-set-key (kbd "C-l") 'evil-window-right)
   (global-set-key (kbd "C-j") 'evil-window-down)
   (global-set-key (kbd "C-k") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+  (define-key evil-normal-state-map (kbd "$") 'evil-end-of-line-or-visual-line)
   (define-key evil-normal-state-map "_" 'comment-line)
   (define-key evil-visual-state-map "_" 'comment-dwim)
   (define-key evil-normal-state-map (kbd ", w") 'buffer-menu)
@@ -67,6 +70,14 @@
   (define-key evil-normal-state-map (kbd ", chat") (lambda() (interactive) (find-file "/sshx:175.123.88.134#3389|sshx:gwgw.com|sshx:root@203.238.139.141:~")))
   )
 (add-hook 'after-init-hook (lambda () (load-theme 'sanityinc-solarized-dark)))
+(defun my-c++-mode-hook ()
+  (setq c-basic-offset 4)
+  (c-set-offset 'substatement-open 0)
+  (setq c-default-style "k&r"
+        c-basic-offset 4)
+
+  )
+(add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 
 (use-package neotree
